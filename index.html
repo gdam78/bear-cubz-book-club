@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📚 Bear Cubz Book Club</title>
+  <meta name="description" content="Recommend a book or browse the Bear Cubz Book Club library.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="📚 Bear Cubz Book Club">
+  <meta property="og:description" content="Recommend a book or browse our club library.">
+  <meta property="og:image" content="preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="📚 Bear Cubz Book Club">
+  <meta name="twitter:description" content="Recommend a book or browse our club library.">
+  <meta name="twitter:image" content="preview.png">
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --card: #fffdf9;
+      --ink: #211d1a;
+      --muted: #6e665e;
+      --accent: #6d3f2c;
+      --accent2: #c99552;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      background: radial-gradient(circle at top, #fffaf1 0, var(--bg) 55%, #e9dfd2 100%);
+      color: var(--ink); font-family: Georgia, "Times New Roman", serif;
+      padding: 28px;
+    }
+    main { width: min(680px, 100%); }
+    .card {
+      background: var(--card); border: 1px solid #ded2c4; border-radius: 24px;
+      padding: 42px 34px; box-shadow: 0 18px 55px rgba(55,35,20,.12);
+      text-align: center;
+    }
+    .mark { font-size: 3rem; margin-bottom: 8px; }
+    h1 { margin: 0; font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: -.03em; }
+    .tagline { color: var(--muted); font: 1.05rem/1.5 system-ui, sans-serif; margin: 12px auto 30px; max-width: 480px; }
+    .actions { display: grid; gap: 14px; text-align: left; }
+    a.button {
+      display: block; text-decoration: none; color: white; background: var(--accent);
+      border-radius: 15px; padding: 18px 20px; font: 700 1.05rem system-ui, sans-serif;
+    }
+    a.button:hover { filter: brightness(1.08); }
+    a.secondary { background: #efe3d2; color: var(--ink); }
+    .small { margin-top: 28px; color: var(--muted); font: .82rem/1.45 system-ui, sans-serif; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <div class="mark">📚</div>
+      <h1>Bear Cubz Book Club</h1>
+      <p class="tagline">A place to recommend books, discover what the club is considering, and keep our reading list together.</p>
+      <div class="actions">
+        <a class="button" href="https://airtable.com/appfTnxXaMgTarggJ/pagdBtbKG3EhMdstE/form" rel="noopener">📖 Recommend a Book</a>
+        <a class="button secondary" href="https://airtable.com/appfTnxXaMgTarggJ/shrBCnM3iUQdKo5Ht" rel="noopener">📚 Browse the Library</a>
+      </div>
+      <p class="small">Pick a book. Make a case. Read something interesting.</p>
+    </section>
+  </main>
+</body>
+</html>
