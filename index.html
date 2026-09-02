@@ -17,6 +17,12 @@ a,button{display:block;width:100%;border:0;border-radius:16px;padding:16px 18px;
 a.primary,button{background:#6f3f72;color:white}a.secondary,button.cat{background:#eee6f1;color:#25202a}
 button.cat{min-height:64px}.question{display:none;margin-top:16px;padding:22px;border-radius:20px;background:#fffaf2;border:2px solid #eadce8;text-align:center}
 .category{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.62}.q{font-size:23px;line-height:1.3;font-weight:700;margin:12px 0 18px}.tiny{text-align:center;font-size:13px;opacity:.55}
+
+.rolling .q{animation:shake .11s linear infinite;opacity:.45}
+.rolling .category{animation:pulse .35s ease-in-out infinite alternate}
+.rolling button{pointer-events:none;opacity:.65}
+@keyframes shake{0%{transform:translateX(-4px) rotate(-1deg)}50%{transform:translateX(4px) rotate(1deg)}100%{transform:translateX(-4px) rotate(-1deg)}}
+@keyframes pulse{from{transform:scale(.98)}to{transform:scale(1.04)}}
 @media(max-width:430px){.grid{grid-template-columns:1fr}.grid button:last-child{width:100%}.q{font-size:21px}}
 </style>
 </head>
@@ -50,6 +56,18 @@ const back=[
 "What have we established?","What do we disagree about?","What haven't we discussed yet?","What question is still bothering you?","Where does the book actually support that?","What happened next?","What are we missing?","What does the text actually say?","Who can point us to the scene we're talking about?","Are we talking about the book or our own interpretation?","What evidence supports that?","What evidence contradicts that?"];
 let list=null,last=-1;
 function choose(a){let i;do{i=Math.floor(Math.random()*a.length)}while(a.length>1&&i===last);last=i;return a[i]}
-function roll(name,a){list=a;last=-1;document.getElementById("box").style.display="block";document.getElementById("cat").textContent=name;document.getElementById("q").textContent=choose(a);document.getElementById("box").scrollIntoView({behavior:"smooth",block:"nearest"})}
-function again(){if(list)document.getElementById("q").textContent=choose(list)}
+function animateRoll(name,a){
+  const box=document.getElementById("box"), q=document.getElementById("q"), cat=document.getElementById("cat");
+  box.style.display="block"; box.classList.add("rolling"); cat.textContent=name; q.textContent="🎲 Rolling…";
+  box.scrollIntoView({behavior:"smooth",block:"nearest"});
+  const start=Date.now(), duration=900;
+  const timer=setInterval(()=>{
+    q.textContent=a[Math.floor(Math.random()*a.length)];
+    if(Date.now()-start>=duration){
+      clearInterval(timer); q.textContent=choose(a); box.classList.remove("rolling");
+    }
+  },90);
+}
+function roll(name,a){list=a;last=-1;animateRoll(name,a)}
+function again(){if(list)animateRoll(document.getElementById("cat").textContent,list)}
 </script></body></html>
