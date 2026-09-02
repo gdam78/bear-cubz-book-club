@@ -1,65 +1,55 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>📚 Bear Cubz Book Club</title>
-  <meta name="description" content="Recommend a book or browse the Bear Cubz Book Club library.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="📚 Bear Cubz Book Club">
-  <meta property="og:description" content="Recommend a book or browse our club library.">
-  <meta property="og:image" content="preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="📚 Bear Cubz Book Club">
-  <meta name="twitter:description" content="Recommend a book or browse our club library.">
-  <meta name="twitter:image" content="preview.png">
-  <style>
-    :root {
-      --bg: #f4efe7;
-      --card: #fffdf9;
-      --ink: #211d1a;
-      --muted: #6e665e;
-      --accent: #6d3f2c;
-      --accent2: #c99552;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh; display: grid; place-items: center;
-      background: radial-gradient(circle at top, #fffaf1 0, var(--bg) 55%, #e9dfd2 100%);
-      color: var(--ink); font-family: Georgia, "Times New Roman", serif;
-      padding: 28px;
-    }
-    main { width: min(680px, 100%); }
-    .card {
-      background: var(--card); border: 1px solid #ded2c4; border-radius: 24px;
-      padding: 42px 34px; box-shadow: 0 18px 55px rgba(55,35,20,.12);
-      text-align: center;
-    }
-    .mark { font-size: 3rem; margin-bottom: 8px; }
-    h1 { margin: 0; font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: -.03em; }
-    .tagline { color: var(--muted); font: 1.05rem/1.5 system-ui, sans-serif; margin: 12px auto 30px; max-width: 480px; }
-    .actions { display: grid; gap: 14px; text-align: left; }
-    a.button {
-      display: block; text-decoration: none; color: white; background: var(--accent);
-      border-radius: 15px; padding: 18px 20px; font: 700 1.05rem system-ui, sans-serif;
-    }
-    a.button:hover { filter: brightness(1.08); }
-    a.secondary { background: #efe3d2; color: var(--ink); }
-    .small { margin-top: 28px; color: var(--muted); font: .82rem/1.45 system-ui, sans-serif; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>📚 Bear Cubz Book Club</title>
+<meta name="description" content="Recommend a book, browse the Bear Cubz library, or roll a discussion question.">
+<meta property="og:title" content="📚 Bear Cubz Book Club">
+<meta property="og:description" content="Recommend a book, browse the library, or roll a discussion question.">
+<meta property="og:image" content="https://gdam78.github.io/bear-cubz-book-club/preview.png">
+<style>
+body{margin:0;padding:24px 16px 40px;background:linear-gradient(145deg,#f8efe5,#eee5f3);color:#25202a;font-family:system-ui,sans-serif}
+.wrap{max-width:720px;margin:auto} header{text-align:center;padding:20px}.bear{font-size:46px}h1{margin:4px 0 8px;font-size:clamp(30px,7vw,48px)}.tagline{opacity:.7}
+.card{background:#fffefaee;border-radius:24px;padding:22px;margin:16px 0;box-shadow:0 10px 28px #3223321f}
+h2{margin:0 0 14px}.buttons,.grid{display:grid;gap:12px}.grid{grid-template-columns:1fr 1fr}
+a,button{display:block;width:100%;border:0;border-radius:16px;padding:16px 18px;font:inherit;font-weight:750;text-align:center;text-decoration:none;cursor:pointer;box-sizing:border-box}
+a.primary,button{background:#6f3f72;color:white}a.secondary,button.cat{background:#eee6f1;color:#25202a}
+button.cat{min-height:64px}.question{display:none;margin-top:16px;padding:22px;border-radius:20px;background:#fffaf2;border:2px solid #eadce8;text-align:center}
+.category{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.62}.q{font-size:23px;line-height:1.3;font-weight:700;margin:12px 0 18px}.tiny{text-align:center;font-size:13px;opacity:.55}
+@media(max-width:430px){.grid{grid-template-columns:1fr}.q{font-size:21px}}
+</style>
 </head>
-<body>
-  <main>
-    <section class="card">
-      <div class="mark">📚</div>
-      <h1>Bear Cubz Book Club</h1>
-      <p class="tagline">A place to recommend books, discover what the club is considering, and keep our reading list together.</p>
-      <div class="actions">
-        <a class="button" href="https://airtable.com/appfTnxXaMgTarggJ/pagdBtbKG3EhMdstE/form" rel="noopener">📖 Recommend a Book</a>
-        <a class="button secondary" href="https://airtable.com/appfTnxXaMgTarggJ/shrBCnM3iUQdKo5Ht" rel="noopener">📚 Browse the Library</a>
-      </div>
-      <p class="small">Pick a book. Make a case. Read something interesting.</p>
-    </section>
-  </main>
-</body>
-</html>
+<body><div class="wrap">
+<header><div class="bear">🐻</div><h1>BEAR CUBZ BOOK CLUB</h1><p class="tagline">Pick a book. Make a case. Read something interesting.</p></header>
+<section class="card"><h2>📚 Library</h2><div class="buttons">
+<a class="primary" href="https://airtable.com/appfTnxXaMgTarggJ/pagdBtbKG3EhMdstE/form">📖 Recommend a Book</a>
+<a class="secondary" href="https://airtable.com/appfTnxXaMgTarggJ/shrBCnM3iUQdKo5Ht">📚 Browse the Library</a>
+</div></section>
+<section class="card"><h2>🎲 Question Roulette</h2><p>Pick a category. Get a random question.</p>
+<div class="grid">
+<button class="cat" onclick="roll('🐟 Fishbowl',fish)">🐟 Fishbowl</button>
+<button class="cat" onclick="roll('🔥 Hot Take',hot)">🔥 Hot Take</button>
+<button class="cat" onclick="roll('🛡️ Defend It',defend)">🛡️ Defend It</button>
+<button class="cat" onclick="roll('🧠 Deep Dive',deep)">🧠 Deep Dive</button>
+<button class="cat" onclick="roll('🔖 Back to the Book',back)">🔖 Back to the Book</button>
+</div>
+<div id="box" class="question"><div id="cat" class="category"></div><div id="q" class="q"></div><button onclick="again()">🎲 Another One</button></div>
+</section><p class="tiny">Made for the Bear Cubz 🐻</p>
+</div>
+<script>
+const fish=[
+"What did you like most about the book?","What did you like least?","Who was your favorite character?","Who annoyed you the most?","What character surprised you?","What scene stuck with you?","What scene made you laugh?","What scene made you uncomfortable?","What was your favorite moment?","What was the weakest moment?","What confused you?","What would you change?","Which character would you want to meet?","Which character would you avoid?","Which character would you hook up with?","Which character would you absolutely not hook up with?","Which character would make the best boyfriend?","Which character would make the worst boyfriend?","What character would you trust with your deepest secret?","Would you recommend this book?"];
+const hot=[
+"Who is the hottest character, and why?","Which character would you swipe right on?","Which character would you block immediately?","Which character would you let ruin your life?","Which character is the biggest red flag?","Which character is the biggest green flag?","Who has the worst taste in men?","Who would make the worst boyfriend?","Who would make the best boyfriend?","Which relationship has the best sexual tension?","Which relationship has absolutely no chemistry?","Did the romance actually work?","Did the book give us enough romance?","Did the book give us too much romance?","Who should have fucked and gotten it over with?","Who deserved a better love interest?","What did the author get completely wrong?","Where did the author chicken out?","What opinion about this book would get you booed out of the room?","What is your most controversial opinion about this book?"];
+const defend=[
+"Who is the most misunderstood character?","Who deserves redemption?","Who deserves condemnation?","Which character's worst decision can you defend?","Which character's worst decision is indefensible?","Can you defend the villain?","Can you defend the protagonist?","Can you make the case that the ending was perfect?","Can you make the case that the ending was terrible?","Which character deserves more sympathy?","Which character deserves less sympathy?","Can you convince us your favorite scene is the best scene?","Which character would you remove from the book?","Which character would you add to the book?","Can you make the case that the romance was necessary?","Can you make the case that the romance wasn't necessary?","Can you argue that the book is actually about something completely different?","Can you make the strongest argument against your own opinion?","Which unpopular opinion about this book could you successfully defend?","Can you convince us to read another book by this author?"];
+const deep=[
+"What is this book actually trying to say?","What does the protagonist want?","What does the protagonist actually need?","How does the protagonist change?","Does the protagonist actually change?","Who has the most power in the story?","How does the setting affect the story?","What role does identity play in the story?","What does the book say about love?","What does the book say about friendship?","What does the book say about family?","What does the book say about masculinity?","What does the book say about sexuality?","What does the book say about belonging?","What does the author leave unsaid?","Which character is most misunderstood?","What contradiction sits at the center of the story?","What theme becomes clearer after finishing the book?","What does the book ask us to forgive?","What question does the book leave unresolved?"];
+const back=[
+"What have we established?","What do we disagree about?","What haven't we discussed yet?","What question is still bothering you?","Where does the book actually support that?","What happened next?","What are we missing?","What does the text actually say?","Who can point us to the scene we're talking about?","Are we talking about the book or our own interpretation?","What evidence supports that?","What evidence contradicts that?"];
+let list=null,last=-1;
+function choose(a){let i;do{i=Math.floor(Math.random()*a.length)}while(a.length>1&&i===last);last=i;return a[i]}
+function roll(name,a){list=a;last=-1;document.getElementById("box").style.display="block";document.getElementById("cat").textContent=name;document.getElementById("q").textContent=choose(a);document.getElementById("box").scrollIntoView({behavior:"smooth",block:"nearest"})}
+function again(){if(list)document.getElementById("q").textContent=choose(list)}
+</script></body></html>
