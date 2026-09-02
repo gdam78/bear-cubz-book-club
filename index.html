@@ -17,25 +17,20 @@ h1{margin:4px 0 8px;font-size:clamp(30px,7vw,48px)}.tagline{opacity:.7}
 h2{margin:0 0 14px}.buttons,.grid{display:grid;gap:12px}.grid{grid-template-columns:1fr 1fr}
 a,button{display:block;width:100%;border:0;border-radius:16px;padding:16px 18px;font:inherit;font-weight:750;text-align:center;text-decoration:none;cursor:pointer}
 a.primary,button{background:#6f3f72;color:white}a.secondary,button.cat{background:#eee6f1;color:#25202a}
-button.cat{min-height:64px}.cat:active{transform:scale(.98)}
+button.cat{min-height:64px}button:disabled{opacity:.65;cursor:wait}
 #box{display:none;margin-top:20px;text-align:center}
 #category{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.62;margin-bottom:12px}
-#shape{position:relative;margin:0 auto 18px;width:min(100%,520px);height:310px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 10px 18px #3223321c)}
-#shape::before{content:"";position:absolute;inset:0;background:#fffaf2;border:3px solid #eadce8;z-index:0}
-#question{position:relative;z-index:1;width:62%;max-width:330px;font-size:clamp(20px,4.5vw,27px);line-height:1.25;font-weight:750}
-#shape.fish::before{clip-path:polygon(7% 50%,18% 39%,31% 25%,52% 20%,69% 25%,82% 36%,94% 50%,82% 64%,69% 75%,52% 80%,31% 75%,18% 61%);border-radius:48% 52% 48% 52%}
-#shape.fish::after{content:"";position:absolute;left:7%;top:39%;width:0;height:0;border-top:34px solid transparent;border-bottom:34px solid transparent;border-right:68px solid #fffaf2;z-index:0;transform:translateX(-2px)}
-#shape.flame::before{clip-path:polygon(50% 3%,61% 24%,77% 17%,75% 38%,92% 48%,82% 72%,67% 88%,50% 97%,32% 90%,18% 75%,10% 55%,25% 40%,28% 19%,42% 29%);border-radius:45%}
-#shape.shield::before{clip-path:polygon(8% 5%,92% 5%,92% 48%,82% 70%,66% 86%,50% 96%,34% 86%,18% 70%,8% 48%);border-radius:12px}
-#shape.brain::before{clip-path:polygon(24% 19%,31% 8%,43% 12%,50% 5%,59% 12%,70% 8%,77% 19%,88% 25%,85% 38%,93% 49%,84% 59%,87% 73%,75% 78%,69% 91%,56% 85%,50% 96%,43% 85%,30% 91%,25% 78%,13% 73%,16% 59%,7% 49%,15% 38%,12% 25%);border-radius:42%}
-#shape.bookmark::before{clip-path:polygon(18% 4%,82% 4%,82% 96%,50% 76%,18% 96%);border-radius:10px}
-#shape.rolling::before{animation:pulse .42s infinite alternate}
-#shape.rolling #question{animation:jitter .11s infinite alternate}
-@keyframes pulse{from{transform:scale(.97);opacity:.75}to{transform:scale(1.02);opacity:1}}
+#shape{position:relative;margin:0 auto 18px;width:min(100%,520px);height:330px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:24px;background:#fffaf2;border:2px solid #eadce8;box-shadow:inset 0 0 0 999px rgba(255,250,242,.32),0 10px 18px #3223321c}
+#shape::before{content:"";position:absolute;inset:10px;background-image:var(--icon);background-repeat:no-repeat;background-position:center;background-size:72%;opacity:.16;filter:grayscale(1) saturate(0);transform:scale(1.04);z-index:0}
+#shape::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,250,242,.76) 0 28%,rgba(255,250,242,.30) 58%,rgba(255,250,242,0) 78%);z-index:0;pointer-events:none}
+#question{position:relative;z-index:1;width:min(72%,360px);font-size:clamp(20px,4.5vw,27px);line-height:1.25;font-weight:750;text-wrap:balance}
+#shape.rolling::before{animation:spinfade .28s infinite alternate}
+#shape.rolling #question{animation:jitter .10s infinite alternate}
+@keyframes spinfade{from{transform:scale(.94) rotate(-2deg);opacity:.08}to{transform:scale(1.06) rotate(2deg);opacity:.22}}
 @keyframes jitter{from{transform:translateX(-3px)}to{transform:translateX(3px)}}
 #again{max-width:330px;margin:auto}
 .tiny{text-align:center;font-size:13px;opacity:.55}
-@media(max-width:430px){.grid{grid-template-columns:1fr}#shape{height:270px}#question{width:65%;font-size:20px}}
+@media(max-width:430px){.grid{grid-template-columns:1fr}#shape{height:290px}#question{width:70%;font-size:20px}}
 </style>
 </head>
 <body><div class="wrap">
@@ -46,25 +41,28 @@ button.cat{min-height:64px}.cat:active{transform:scale(.98)}
 </div></section>
 <section class="card"><h2>🎲 Question Roulette</h2><p>Pick a category. Get a random question.</p>
 <div class="grid">
-<button class="cat" onclick="roll('🐟 Fishbowl',fish,'fish')">🐟 Fishbowl</button>
-<button class="cat" onclick="roll('🔥 Hot Take',hot,'flame')">🔥 Hot Take</button>
-<button class="cat" onclick="roll('🛡️ Defend It',defend,'shield')">🛡️ Defend It</button>
-<button class="cat" onclick="roll('🧠 Deep Dive',deep,'brain')">🧠 Deep Dive</button>
-<button class="cat" onclick="roll('🔖 Back to the Book',back,'bookmark')">🔖 Back to the Book</button>
+<button class="cat" onclick="roll('🐟 Fishbowl','fish','https://cdn.jsdelivr.net/gh/hfg-gmuend/openmoji/color/svg/1F41F.svg')">🐟 Fishbowl</button>
+<button class="cat" onclick="roll('🔥 Hot Take','hot','https://cdn.jsdelivr.net/gh/hfg-gmuend/openmoji/color/svg/1F525.svg')">🔥 Hot Take</button>
+<button class="cat" onclick="roll('🛡️ Defend It','defend','https://cdn.jsdelivr.net/gh/hfg-gmuend/openmoji/color/svg/1F6E1-FE0F.svg')">🛡️ Defend It</button>
+<button class="cat" onclick="roll('🧠 Deep Dive','deep','https://cdn.jsdelivr.net/gh/hfg-gmuend/openmoji/color/svg/1F9E0.svg')">🧠 Deep Dive</button>
+<button class="cat" onclick="roll('🔖 Back to the Book','back','https://cdn.jsdelivr.net/gh/hfg-gmuend/openmoji/color/svg/1F516.svg')">🔖 Back to the Book</button>
 </div>
 <div id="box"><div id="category"></div><div id="shape"><div id="question"></div></div><button id="again" onclick="again()">🎲 Another One</button></div>
-</section><p class="tiny">Made for the Bear Cubz 🐻</p>
+</section><p class="tiny">Made for the Bear Cubz 🐻<br>Artwork: OpenMoji, CC BY-SA 4.0</p>
 </div>
 <script>
-const fish=["What did you like most about the book?","What did you like least?","Who was your favorite character?","Who annoyed you the most?","What character surprised you?","What scene stuck with you?","What scene made you laugh?","What scene made you uncomfortable?","What was your favorite moment?","What was the weakest moment?","What confused you?","What would you change?","Which character would you want to meet?","Which character would you avoid?","Which character would you hook up with?","Which character would you absolutely not hook up with?","Which character would make the best boyfriend?","Which character would make the worst boyfriend?","What character would you trust with your deepest secret?","Would you recommend this book?"];
-const hot=["Who is the hottest character, and why?","Which character would you swipe right on?","Which character would you block immediately?","Which character would you let ruin your life?","Which character is the biggest red flag?","Which character is the biggest green flag?","Who has the worst taste in men?","Who would make the worst boyfriend?","Who would make the best boyfriend?","Which relationship has the best sexual tension?","Which relationship has absolutely no chemistry?","Did the romance actually work?","Did the book give us enough romance?","Did the book give us too much romance?","Who should have fucked and gotten it over with?","Who deserved a better love interest?","What did the author get completely wrong?","Where did the author chicken out?","What opinion about this book would get you booed out of the room?","What is your most controversial opinion about this book?"];
-const defend=["Who is the most misunderstood character?","Who deserves redemption?","Who deserves condemnation?","Which character's worst decision can you defend?","Which character's worst decision is indefensible?","Can you defend the villain?","Can you defend the protagonist?","Can you make the case that the ending was perfect?","Can you make the case that the ending was terrible?","Which character deserves more sympathy?","Which character deserves less sympathy?","Can you convince us your favorite scene is the best scene?","Which character would you remove from the book?","Which character would you add to the book?","Can you make the case that the romance was necessary?","Can you make the case that the romance wasn't necessary?","Can you argue that the book is actually about something completely different?","Can you make the strongest argument against your own opinion?","Which unpopular opinion about this book could you successfully defend?","Can you convince us to read another book by this author?"];
-const deep=["What is this book actually trying to say?","What does the protagonist want?","What does the protagonist actually need?","How does the protagonist change?","Does the protagonist actually change?","Who has the most power in the story?","How does the setting affect the story?","What role does identity play in the story?","What does the book say about love?","What does the book say about friendship?","What does the book say about family?","What does the book say about masculinity?","What does the book say about sexuality?","What does the book say about belonging?","What does the author leave unsaid?","Which character is most misunderstood?","What contradiction sits at the center of the story?","What theme becomes clearer after finishing the book?","What does the book ask us to forgive?","What question does the book leave unresolved?"];
-const back=["What have we established?","What do we disagree about?","What haven't we discussed yet?","What question is still bothering you?","Where does the book actually support that?","What happened next?","What are we missing?","What does the text actually say?","Who can point us to the scene we're talking about?","Are we talking about the book or our own interpretation?","What evidence supports that?","What evidence contradicts that?"];
-let list=null,last=-1,shapeClass="";
+const Q={"fish": ["What did you like most about the book?", "What did you like least?", "Who was your favorite character?", "Who annoyed you the most?", "What character surprised you?", "What scene stuck with you?", "What scene made you laugh?", "What scene made you uncomfortable?", "What was your favorite moment?", "What was the weakest moment?", "What confused you?", "What would you change?", "Which character would you want to meet?", "Which character would you avoid?", "Which character would you hook up with?", "Which character would you absolutely not hook up with?", "Which character would make the best boyfriend?", "Which character would make the worst boyfriend?", "What character would you trust with your deepest secret?", "Would you recommend this book?"], "hot": ["Who is the hottest character, and why?", "Which character would you swipe right on?", "Which character would you block immediately?", "Which character would you let ruin your life?", "Which character is the biggest red flag?", "Which character is the biggest green flag?", "Who has the worst taste in men?", "Who would make the worst boyfriend?", "Who would make the best boyfriend?", "Which relationship has the best sexual tension?", "Which relationship has absolutely no chemistry?", "Did the romance actually work?", "Did the book give us enough romance?", "Did the book give us too much romance?", "Who should have fucked and gotten it over with?", "Who deserved a better love interest?", "What did the author get completely wrong?", "Where did the author chicken out?", "What opinion about this book would get you booed out of the room?", "What is your most controversial opinion about this book?"], "defend": ["Who is the most misunderstood character?", "Who deserves redemption?", "Who deserves condemnation?", "Which character's worst decision can you defend?", "Which character's worst decision is indefensible?", "Can you defend the villain?", "Can you defend the protagonist?", "Can you make the case that the ending was perfect?", "Can you make the case that the ending was terrible?", "Which character deserves more sympathy?", "Which character deserves less sympathy?", "Can you convince us your favorite scene is the best scene?", "Which character would you remove from the book?", "Which character would you add to the book?", "Can you make the case that the romance was necessary?", "Can you make the case that the romance wasn't necessary?", "Can you argue that the book is actually about something completely different?", "Can you make the strongest argument against your own opinion?", "Which unpopular opinion about this book could you successfully defend?", "Can you convince us to read another book by this author?"], "deep": ["What is this book actually trying to say?", "What does the protagonist want?", "What does the protagonist actually need?", "How does the protagonist change?", "Does the protagonist actually change?", "Who has the most power in the story?", "How does the setting affect the story?", "What role does identity play in the story?", "What does the book say about love?", "What does the book say about friendship?", "What does the book say about family?", "What does the book say about masculinity?", "What does the book say about sexuality?", "What does the book say about belonging?", "What does the author leave unsaid?", "Which character is most misunderstood?", "What contradiction sits at the center of the story?", "What theme becomes clearer after finishing the book?", "What does the book ask us to forgive?", "What question does the book leave unresolved?"], "back": ["What have we established?", "What do we disagree about?", "What haven't we discussed yet?", "What question is still bothering you?", "Where does the book actually support that?", "What happened next?", "What are we missing?", "What does the text actually say?", "Who can point us to the scene we're talking about?", "Are we talking about the book or our own interpretation?", "What evidence supports that?", "What evidence contradicts that?"]};
+let list=null,last=-1,currentName="",currentIcon="";
 function choose(a){let i;do{i=Math.floor(Math.random()*a.length)}while(a.length>1&&i===last);last=i;return a[i]}
-function roll(name,a,shape){list=a;last=-1;shapeClass=shape;document.getElementById("box").style.display="block";document.getElementById("category").textContent=name;const s=document.getElementById("shape");s.className=shape+" rolling";document.getElementById("question").textContent="Rolling…";document.getElementById("again").disabled=true;
-let count=0;const timer=setInterval(()=>{document.getElementById("question").textContent=a[Math.floor(Math.random()*a.length)];count++;if(count>=9){clearInterval(timer);document.getElementById("question").textContent=choose(a);s.className=shape;document.getElementById("again").disabled=false}},95);
-document.getElementById("box").scrollIntoView({behavior:"smooth",block:"nearest"})}
-function again(){if(list)roll(document.getElementById("category").textContent,list,shapeClass)}
+function roll(name,key,icon){
+list=Q[key];last=-1;currentName=name;currentIcon=icon;
+document.getElementById("box").style.display="block";
+document.getElementById("category").textContent=name;
+const s=document.getElementById("shape");s.style.setProperty("--icon","url('"+icon+"')");
+s.className="rolling";document.getElementById("question").textContent="Rolling…";
+const btn=document.getElementById("again");btn.disabled=true;
+let count=0;const timer=setInterval(()=>{document.getElementById("question").textContent=list[Math.floor(Math.random()*list.length)];count++;if(count>=10){clearInterval(timer);document.getElementById("question").textContent=choose(list);s.className="";btn.disabled=false}},95);
+document.getElementById("box").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function again(){if(list)roll(currentName,Object.keys(Q).find(k=>Q[k]===list),currentIcon)}
 </script></body></html>
